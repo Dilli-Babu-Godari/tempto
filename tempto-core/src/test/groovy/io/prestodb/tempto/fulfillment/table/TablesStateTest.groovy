@@ -47,7 +47,7 @@ class TablesStateTest
     {
         tablesState = new TablesState(
                 [db1_table1,
-                 db1_table2, db1_schema1_table2,
+                 db1_table2,
                  db1_table3, db2_table3,
                  db1_schema2_table4, db2_schema2_table4,
                  db1_table5, db1_schema3_table5,
@@ -67,7 +67,7 @@ class TablesStateTest
         where:
         tableHandle                                                 | expectedTable
         tableHandle('table1')                                       | db1_table1
-        tableHandle('table2').inSchema('schema1')                   | db1_schema1_table2
+        tableHandle('table2').inSchema('schema1')                   | db1_table3
         tableHandle('table3').inDatabase('db1')                     | db1_table3
         tableHandle('table4').inDatabase('db1').inSchema('schema2') | db1_schema2_table4
         tableHandle('table5').inDatabase('db1').inSchema('schema3') | db1_schema3_table5

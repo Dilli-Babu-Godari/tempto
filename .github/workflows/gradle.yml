@@ -19,11 +19,21 @@ jobs:
         with:
           show-progress: false
           fetch-depth: 0
+
+      # Step to set up JDK
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           java-version: ${{ matrix.java-version }}
           distribution: 'temurin'
           cache: gradle
+
+      # Step to set up gradle.properties
+      - name: Set up gradle.properties
+        run: |
+          echo "skipSigning=false" >> gradle.properties
+
+      # Step to run Gradle build
       - name: Gradle Build
         run: ./gradlew build
+
